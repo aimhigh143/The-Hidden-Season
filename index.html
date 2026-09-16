@@ -1,0 +1,3150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#11100f">
+<meta name="description" content="The Hidden Season — Personal Blueprint. A thoughtful conversation to help you understand yourself, your current season, and what may come next.">
+<title>The Hidden Season — Personal Blueprint</title>
+
+<style>
+:root{
+  --bg:#11100f;
+  --bg-soft:#171513;
+  --card:#1b1917;
+  --card-soft:#211e1b;
+  --text:#f4efe7;
+  --muted:#aaa29a;
+  --gold:#c9a96b;
+  --gold-soft:#e2c995;
+  --violet:#82739b;
+  --line:rgba(255,255,255,.09);
+  --line-soft:rgba(255,255,255,.055);
+  --success:#a8c7a1;
+  --danger:#d9a0a0;
+  --shadow:0 30px 80px rgba(0,0,0,.28);
+}
+
+*{box-sizing:border-box}
+
+html{
+  scroll-behavior:smooth;
+}
+
+body{
+  margin:0;
+  background:
+    radial-gradient(circle at 15% 10%, rgba(130,115,155,.09), transparent 32%),
+    radial-gradient(circle at 85% 20%, rgba(201,169,107,.07), transparent 28%),
+    var(--bg);
+  color:var(--text);
+  font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+  line-height:1.65;
+}
+
+button,
+input,
+textarea,
+select{
+  font:inherit;
+}
+
+button{
+  cursor:pointer;
+}
+
+.hidden{
+  display:none!important;
+}
+
+.app{
+  min-height:100vh;
+}
+
+.screen{
+  min-height:100vh;
+  width:100%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:36px 18px;
+}
+
+.container{
+  width:min(940px,100%);
+  margin:auto;
+}
+
+.narrow{
+  width:min(700px,100%);
+}
+
+.brand{
+  letter-spacing:.22em;
+  text-transform:uppercase;
+  color:var(--gold-soft);
+  font-size:.72rem;
+  font-weight:700;
+}
+
+.hero{
+  text-align:center;
+  padding:30px 0;
+}
+
+.hero-mark{
+  width:64px;
+  height:64px;
+  margin:0 auto 30px;
+  border:1px solid rgba(201,169,107,.35);
+  border-radius:50%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  color:var(--gold);
+  font-size:1.3rem;
+  box-shadow:0 0 50px rgba(201,169,107,.06);
+}
+
+h1,h2,h3{
+  margin:0;
+  font-weight:500;
+  letter-spacing:-.035em;
+}
+
+.hero h1{
+  font-family:Georgia,"Times New Roman",serif;
+  font-size:clamp(3rem,8vw,6.5rem);
+  line-height:.95;
+  margin:18px 0 24px;
+}
+
+.hero .subtitle{
+  font-size:clamp(1.05rem,2vw,1.35rem);
+  color:var(--muted);
+  max-width:620px;
+  margin:0 auto 38px;
+}
+
+.italic{
+  font-family:Georgia,"Times New Roman",serif;
+  font-style:italic;
+}
+
+.quote{
+  color:var(--gold-soft);
+  font-family:Georgia,"Times New Roman",serif;
+  font-size:1.15rem;
+  line-height:1.7;
+}
+
+.panel{
+  background:linear-gradient(145deg,rgba(255,255,255,.045),rgba(255,255,255,.018));
+  border:1px solid var(--line);
+  border-radius:28px;
+  box-shadow:var(--shadow);
+  padding:34px;
+}
+
+.center{
+  text-align:center;
+}
+
+.field-label{
+  display:block;
+  color:var(--muted);
+  font-size:.84rem;
+  margin-bottom:10px;
+}
+
+.input{
+  width:100%;
+  border:1px solid var(--line);
+  background:rgba(0,0,0,.16);
+  color:var(--text);
+  border-radius:16px;
+  padding:16px 18px;
+  outline:none;
+  transition:.25s ease;
+}
+
+.input:focus{
+  border-color:rgba(201,169,107,.65);
+  box-shadow:0 0 0 4px rgba(201,169,107,.07);
+}
+
+textarea.input{
+  min-height:150px;
+  resize:vertical;
+}
+
+.primary{
+  border:0;
+  border-radius:999px;
+  padding:14px 24px;
+  color:#181512;
+  background:linear-gradient(135deg,var(--gold-soft),var(--gold));
+  font-weight:700;
+  transition:.25s ease;
+}
+
+.primary:hover{
+  transform:translateY(-2px);
+  box-shadow:0 14px 35px rgba(201,169,107,.16);
+}
+
+.secondary{
+  border:1px solid var(--line);
+  border-radius:999px;
+  padding:13px 20px;
+  color:var(--text);
+  background:rgba(255,255,255,.035);
+}
+
+.actions{
+  display:flex;
+  justify-content:center;
+  gap:12px;
+  flex-wrap:wrap;
+  margin-top:26px;
+}
+
+.lang-switch{
+  display:flex;
+  gap:8px;
+  justify-content:center;
+  margin:14px 0 24px;
+}
+
+.lang{
+  border:1px solid var(--line);
+  background:rgba(255,255,255,.025);
+  color:var(--muted);
+  border-radius:999px;
+  padding:9px 18px;
+}
+
+.lang.active{
+  color:var(--text);
+  border-color:rgba(201,169,107,.55);
+  background:rgba(201,169,107,.08);
+}
+
+.intro-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:14px;
+  margin:30px 0;
+}
+
+.mini-card{
+  border:1px solid var(--line-soft);
+  border-radius:20px;
+  padding:20px;
+  background:rgba(255,255,255,.018);
+}
+
+.mini-card strong{
+  display:block;
+  margin-bottom:6px;
+  font-size:.95rem;
+}
+
+.mini-card span{
+  color:var(--muted);
+  font-size:.86rem;
+}
+
+.assessment{
+  align-items:flex-start;
+  padding-top:34px;
+}
+
+.assess-wrap{
+  width:min(760px,100%);
+  margin:auto;
+}
+
+.topbar{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:15px;
+  margin-bottom:14px;
+}
+
+.eyebrow{
+  color:var(--gold-soft);
+  font-size:.72rem;
+  letter-spacing:.16em;
+  text-transform:uppercase;
+  font-weight:700;
+}
+
+.counter{
+  color:var(--muted);
+  font-size:.82rem;
+}
+
+.progress{
+  height:3px;
+  background:rgba(255,255,255,.08);
+  border-radius:99px;
+  overflow:hidden;
+  margin-bottom:55px;
+}
+
+.progress-fill{
+  height:100%;
+  width:0%;
+  background:var(--gold);
+  transition:width .4s ease;
+}
+
+.question-card{
+  animation:fadeUp .45s ease both;
+}
+
+.question{
+  font-family:Georgia,"Times New Roman",serif;
+  font-size:clamp(2rem,5vw,3.25rem);
+  line-height:1.15;
+  letter-spacing:-.035em;
+  margin-bottom:28px;
+}
+
+.question-note{
+  color:var(--muted);
+  margin:-12px 0 24px;
+  font-size:.94rem;
+}
+
+.answers{
+  display:grid;
+  gap:12px;
+}
+
+.answer{
+  width:100%;
+  text-align:left;
+  border:1px solid var(--line);
+  background:rgba(255,255,255,.025);
+  color:var(--text);
+  padding:18px 20px;
+  border-radius:18px;
+  transition:.22s ease;
+}
+
+.answer:hover{
+  border-color:rgba(201,169,107,.45);
+  background:rgba(201,169,107,.055);
+  transform:translateX(3px);
+}
+
+.answer .letter{
+  color:var(--gold);
+  font-weight:700;
+  margin-right:10px;
+}
+
+.friend-response{
+  margin-top:25px;
+  border:1px solid rgba(201,169,107,.16);
+  background:rgba(201,169,107,.035);
+  border-radius:20px;
+  padding:20px;
+  animation:fadeUp .35s ease both;
+}
+
+.friend-response .small{
+  color:var(--gold-soft);
+  font-size:.76rem;
+  text-transform:uppercase;
+  letter-spacing:.13em;
+  font-weight:700;
+}
+
+.friend-response p{
+  margin:8px 0 0;
+  color:#dcd5cc;
+}
+
+.report{
+  align-items:flex-start;
+  padding-top:60px;
+  padding-bottom:90px;
+}
+
+.report-header{
+  text-align:center;
+  margin-bottom:60px;
+}
+
+.report-header h1{
+  font-family:Georgia,"Times New Roman",serif;
+  font-size:clamp(2.7rem,7vw,5.2rem);
+  margin:12px 0 18px;
+}
+
+.report-header p{
+  max-width:650px;
+  margin:auto;
+  color:var(--muted);
+}
+
+.report-section{
+  margin-bottom:22px;
+  border:1px solid var(--line);
+  border-radius:25px;
+  background:linear-gradient(145deg,rgba(255,255,255,.04),rgba(255,255,255,.016));
+  padding:30px;
+}
+
+.section-number{
+  color:var(--gold);
+  font-size:.7rem;
+  font-weight:800;
+  letter-spacing:.16em;
+  text-transform:uppercase;
+  margin-bottom:10px;
+}
+
+.report-section h2{
+  font-family:Georgia,"Times New Roman",serif;
+  font-size:2rem;
+  margin-bottom:16px;
+}
+
+.report-section p{
+  color:#d7d0c8;
+  margin:0 0 14px;
+}
+
+.report-section p:last-child{
+  margin-bottom:0;
+}
+
+.insight{
+  margin:20px 0;
+  padding:22px;
+  border-left:2px solid var(--gold);
+  background:rgba(201,169,107,.035);
+  border-radius:0 16px 16px 0;
+}
+
+.insight strong{
+  color:var(--gold-soft);
+}
+
+.cluster-grid{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:12px;
+  margin-top:18px;
+}
+
+.cluster{
+  border:1px solid var(--line-soft);
+  border-radius:17px;
+  padding:18px;
+  background:rgba(255,255,255,.018);
+}
+
+.cluster strong{
+  display:block;
+  margin-bottom:5px;
+}
+
+.cluster span{
+  color:var(--muted);
+  font-size:.9rem;
+}
+
+.experiment{
+  padding:19px;
+  border:1px solid var(--line-soft);
+  border-radius:17px;
+  margin-top:12px;
+}
+
+.experiment strong{
+  display:block;
+  color:var(--gold-soft);
+  margin-bottom:5px;
+}
+
+.mantra{
+  text-align:center;
+  padding:45px 28px;
+  background:
+    radial-gradient(circle at 50% 0%,rgba(130,115,155,.14),transparent 55%),
+    rgba(255,255,255,.018);
+}
+
+.mantra-text{
+  font-family:Georgia,"Times New Roman",serif;
+  font-style:italic;
+  font-size:clamp(1.6rem,4vw,2.5rem);
+  line-height:1.45;
+  max-width:720px;
+  margin:20px auto 0;
+  color:var(--gold-soft);
+}
+
+.bible{
+  background:
+    radial-gradient(circle at 85% 15%,rgba(201,169,107,.08),transparent 40%),
+    rgba(255,255,255,.018);
+}
+
+.bible-reference{
+  color:var(--gold-soft);
+  font-weight:700;
+  margin-bottom:12px;
+}
+
+.bible-note{
+  color:var(--muted)!important;
+  font-size:.83rem;
+}
+
+.ending{
+  text-align:center;
+  border:0;
+  background:transparent;
+  padding:60px 20px 20px;
+}
+
+.ending-message{
+  font-family:Georgia,"Times New Roman",serif;
+  font-size:clamp(1.5rem,4vw,2.3rem);
+  line-height:1.5;
+  max-width:720px;
+  margin:0 auto 28px;
+}
+
+.signature{
+  text-align:right;
+  width:min(720px,100%);
+  margin:35px auto 0;
+  color:#b9afa4;
+  font-family:Georgia,"Times New Roman",serif;
+  font-style:italic;
+  font-size:.9rem;
+}
+
+.disclaimer{
+  color:#807a73;
+  font-size:.74rem;
+  text-align:center;
+  max-width:700px;
+  margin:30px auto 0;
+}
+
+.storage-box{
+  border:1px solid var(--line);
+  border-radius:20px;
+  padding:20px;
+  margin-top:20px;
+  background:rgba(255,255,255,.018);
+}
+
+.storage-box p{
+  font-size:.84rem;
+  color:var(--muted);
+  margin:0 0 14px;
+}
+
+footer{
+  text-align:center;
+  padding:30px 18px 45px;
+  color:#6f6962;
+  font-size:.73rem;
+}
+
+@keyframes fadeUp{
+  from{
+    opacity:0;
+    transform:translateY(10px);
+  }
+  to{
+    opacity:1;
+    transform:translateY(0);
+  }
+}
+
+@media(max-width:700px){
+  .screen{
+    padding:25px 15px;
+  }
+
+  .panel{
+    padding:24px 19px;
+    border-radius:22px;
+  }
+
+  .intro-grid{
+    grid-template-columns:1fr;
+  }
+
+  .cluster-grid{
+    grid-template-columns:1fr;
+  }
+
+  .question{
+    font-size:2rem;
+  }
+
+  .progress{
+    margin-bottom:35px;
+  }
+
+  .report-section{
+    padding:23px 20px;
+  }
+
+  .report-section h2{
+    font-size:1.7rem;
+  }
+
+  .hero h1{
+    font-size:3.3rem;
+  }
+}
+</style>
+</head>
+
+<body>
+<div class="app">
+
+<!-- LANDING -->
+<section id="landing" class="screen">
+  <div class="container narrow hero">
+
+    <div class="hero-mark">✦</div>
+
+    <div class="brand">The Hidden Season</div>
+
+    <h1>Personal<br>Blueprint</h1>
+
+    <p class="subtitle">
+      You may not be lost.<br>
+      You may simply be between versions of yourself.
+    </p>
+
+    <div class="panel">
+
+      <p class="quote">
+        Before you try to figure out what you should do next,
+        let's slow down and understand <em>you</em> first.
+      </p>
+
+      <div style="margin-top:30px;text-align:left;">
+        <label class="field-label" for="name">What's your name?</label>
+        <input
+          id="name"
+          class="input"
+          type="text"
+          maxlength="80"
+          autocomplete="name"
+          placeholder="Enter your name"
+        >
+      </div>
+
+      <div style="margin-top:22px;">
+        <span class="field-label">Choose your language</span>
+
+        <div class="lang-switch">
+          <button class="lang active" data-lang="en" onclick="setLanguage('en')">
+            English
+          </button>
+
+          <button class="lang" data-lang="tl" onclick="setLanguage('tl')">
+            Tagalog
+          </button>
+        </div>
+      </div>
+
+      <div class="actions">
+        <button class="primary" onclick="beginExperience()">
+          Begin My Blueprint →
+        </button>
+      </div>
+
+    </div>
+
+    <p class="disclaimer">
+      This experience is designed for personal reflection and self-discovery.
+      It is not a clinical diagnosis or professional psychological assessment.
+    </p>
+
+  </div>
+</section>
+
+
+<!-- INTRO -->
+<section id="intro" class="screen hidden">
+  <div class="container narrow">
+
+    <div class="panel">
+
+      <div class="brand">A conversation, not a test</div>
+
+      <h1 id="introTitle" style="font-family:Georgia,serif;font-size:clamp(2.5rem,7vw,4.5rem);margin:18px 0;">
+        Hello there. 👋
+      </h1>
+
+      <p id="introText" style="font-size:1.08rem;color:#d2cbc2;">
+        I'm glad you're here.
+      </p>
+
+      <div class="intro-grid">
+
+        <div class="mini-card">
+          <strong id="introCard1Title">Be honest.</strong>
+          <span id="introCard1Text">
+            There are no perfect answers here.
+          </span>
+        </div>
+
+        <div class="mini-card">
+          <strong id="introCard2Title">Take your time.</strong>
+          <span id="introCard2Text">
+            You don't need to overthink every answer.
+          </span>
+        </div>
+
+        <div class="mini-card">
+          <strong id="introCard3Title">Stay curious.</strong>
+          <span id="introCard3Text">
+            You may notice something about yourself along the way.
+          </span>
+        </div>
+
+      </div>
+
+      <p id="introBottom" class="quote">
+        Let's discover what your answers have to say about you.
+      </p>
+
+      <div class="actions">
+        <button class="primary" onclick="startAssessment()">
+          Let's Begin →
+        </button>
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ASSESSMENT -->
+<section id="assessment" class="screen assessment hidden">
+  <div class="assess-wrap">
+
+    <div class="topbar">
+      <span class="eyebrow" id="conversationLabel">The Conversation</span>
+      <span class="counter" id="counter">1 / 20</span>
+    </div>
+
+    <div class="progress">
+      <div id="progressFill" class="progress-fill"></div>
+    </div>
+
+    <div id="questionArea"></div>
+
+  </div>
+</section>
+
+
+<!-- REPORT -->
+<section id="report" class="screen report hidden">
+  <div class="container">
+
+    <div class="report-header">
+
+      <div class="brand">The Hidden Season</div>
+
+      <h1 id="reportTitle">Your Personal Blueprint</h1>
+
+      <p id="reportIntro">
+        This isn't a final definition of who you are.
+        It's a picture of the patterns your answers revealed today.
+      </p>
+
+    </div>
+
+    <div id="reportContent"></div>
+
+    <div class="storage-box">
+
+      <strong id="storageTitle">Your responses belong to you.</strong>
+
+      <p id="storageText">
+        This version keeps the information you entered in this browser.
+        You can export the complete submission, including your original answers.
+      </p>
+
+      <div class="actions" style="margin-top:15px;">
+        <button class="secondary" onclick="exportResponses()">
+          Export My Responses
+        </button>
+
+        <button class="secondary" onclick="startAgain()">
+          Start Again
+        </button>
+      </div>
+
+    </div>
+
+    <p class="disclaimer">
+      The Hidden Season is designed for reflection and self-discovery.
+      Its interpretations are psychology-informed and should not be treated
+      as a clinical diagnosis, medical advice, or a guaranteed prediction
+      of career or life outcomes.
+    </p>
+
+  </div>
+</section>
+
+<footer>
+  The Hidden Season · Personal Blueprint
+</footer>
+
+</div>
+
+
+<script>
+/* =========================================================
+   THE HIDDEN SEASON
+   PERSONAL BLUEPRINT ENGINE
+   ========================================================= */
+
+const TOTAL_QUESTIONS = 20;
+/* =========================================================
+   FORMSPREE
+   Automatically submits the visitor's complete assessment
+   ========================================================= */
+
+const FORMSPREE_ENDPOINT = "https://formspree.io/f/mkjgwknn";
+
+
+let language = "en";
+let currentQuestion = 0;
+let answers = [];
+let profile = {
+  id: "",
+  name: "",
+  language: "en",
+  startedAt: "",
+  completedAt: "",
+  answers: [],
+  reflections: [],
+  blueprint: {}
+};
+
+
+/* =========================================================
+   LANGUAGE
+   ========================================================= */
+
+const copy = {
+
+  en: {
+    introTitle: name => `Hello, ${name}. 👋`,
+    introText:
+      `I'm glad you're here. This isn't about putting you inside a box or giving you a label that supposedly explains your whole life. It's a conversation. I'll ask you a few questions. Some may feel simple. Others might make you pause for a second and think… That's okay. There are no perfect answers here. Just be honest.`,
+
+    card1Title:"Be honest.",
+    card1Text:"You don't need to choose the answer that sounds best.",
+    card2Title:"Take your time.",
+    card2Text:"You can pause. You don't need to force an answer.",
+    card3Title:"Stay curious.",
+    card3Text:"You may discover something you hadn't noticed before.",
+
+    introBottom:
+      "You don't have to figure everything out today. Let's simply see what your answers reveal.",
+
+    conversation:"The Conversation",
+
+    next:"Let's keep going →",
+    final:"Let's see what we discovered →",
+
+    yourBlueprint:"Your Personal Blueprint",
+
+    reportIntro:
+      "This isn't a final definition of who you are. It's a picture of the patterns your answers revealed today.",
+
+    sections:{
+      who:"WHO YOU ARE",
+      drives:"WHAT DRIVES YOU",
+      pulls:"WHAT PULLS YOU",
+      brings:"WHAT YOU NATURALLY BRING",
+      environment:"YOUR IDEAL ENVIRONMENT",
+      friction:"YOUR FRICTION POINTS",
+      direction:"WHERE YOU COULD GO",
+      season:"YOUR CURRENT SEASON",
+      unnoticed:"SOMETHING YOU MAY NOT HAVE NOTICED",
+      way:"YOUR WAY THROUGH",
+      experiments:"YOUR NEXT EXPERIMENTS",
+      reflection:"YOUR REFLECTION",
+      mantra:"YOUR PERSONAL MANTRA",
+      bible:"A WORD FOR YOUR SEASON"
+    },
+
+    storageTitle:"Your responses belong to you.",
+    storageText:"This version keeps the information you entered in this browser. You can export the complete submission, including your original answers.",
+
+    bibleIntro:
+      "There is a piece of Biblical wisdom that may speak gently into the season your answers describe.",
+
+    bibleNote:
+      "This reflection is intentionally separate from the psychological interpretation above. It is offered as spiritual reflection, not as a psychological finding.",
+
+    footerNote:
+      "Great things may be closer than you think. Don't forget to live while you're becoming.",
+
+    complete:"You made it. Take a breath…"
+  },
+
+  tl: {
+    introTitle: name => `Hello, ${name}. 👋`,
+    introText:
+      `Masaya akong nandito ka. Hindi ito tungkol sa paglalagay sa'yo sa isang kahon o pagbibigay ng label na parang iyon na ang magpapaliwanag sa buong pagkatao mo. Isa itong pag-uusap. May ilang tanong na simple lang. May iba naman na baka mapahinto ka sandali at mapaisip… Okay lang iyon. Walang perpektong sagot dito. Maging totoo ka lang.`,
+
+    card1Title:"Maging totoo.",
+    card1Text:"Hindi mo kailangang piliin ang sagot na mukhang pinakamaganda.",
+    card2Title:"Dahan-dahan lang.",
+    card2Text:"Pwede kang huminto sandali. Hindi mo kailangang pilitin ang sagot.",
+    card3Title:"Manatiling curious.",
+    card3Text:"Baka may mapansin ka tungkol sa sarili mo na hindi mo pa nakita noon.",
+
+    introBottom:
+      "Hindi mo kailangang ayusin ang buong buhay mo ngayon. Tingnan lang natin kung ano ang ipinapakita ng mga sagot mo.",
+
+    conversation:"Ang Pag-uusap",
+
+    next:"Tuloy lang tayo →",
+    final:"Tingnan natin kung ano ang nakita natin →",
+
+    yourBlueprint:"Ang Personal Blueprint Mo",
+
+    reportIntro:
+      "Hindi ito ang final na kahulugan ng pagkatao mo. Isa itong larawan ng mga pattern na lumitaw mula sa mga sagot mo ngayon.",
+
+    sections:{
+      who:"SINO KA",
+      drives:"ANO ANG NAGPAPALAKAS SA'YO",
+      pulls:"ANO ANG HUMIHILA SA'YO",
+      brings:"ANO ANG LIKAS MONG NAIAAMBAG",
+      environment:"ANONG URI NG ENVIRONMENT ANG BAGAY SA'YO",
+      friction:"SAAN KA KARANIWANG NAHIHIRAPAN",
+      direction:"SAAN KA PUWEDENG TUMUNGO",
+      season:"ANG KASALUKUYAN MONG SEASON",
+      unnoticed:"ISANG BAGAY NA BAKA HINDI MO NAPAPANSIN",
+      way:"ANG PARAAN MO PARA MAKATAWID",
+      experiments:"MGA SUSUNOD MONG EXPERIMENT",
+      reflection:"ANG REFLECTION MO",
+      mantra:"ANG PERSONAL MONG MANTRA",
+      bible:"ISANG SALITA PARA SA SEASON MO"
+    },
+
+    storageTitle:"Sa'yo ang mga sagot mo.",
+    storageText:"Ang version na ito ay nagse-save ng mga impormasyong inilagay mo sa browser na ginagamit mo. Maaari mong i-export ang buong submission, kasama ang original mong mga sagot.",
+
+    bibleIntro:
+      "May isang Biblical wisdom na maaaring mahinahong magsalita sa season na ipinapakita ng mga sagot mo.",
+
+    bibleNote:
+      "Sadyang hiwalay ang reflection na ito sa psychological interpretation. Spiritual reflection ito, hindi psychological finding.",
+
+    footerNote:
+      "Baka mas malapit na kaysa iniisip mo ang mga bagay na hinihintay mo. Huwag kalimutang mabuhay habang ikaw ay nagiging ikaw.",
+
+    complete:"Nandito ka na. Huminga ka muna…"
+  }
+};
+
+
+/* =========================================================
+   20 QUESTIONS
+   ========================================================= */
+
+const questions = [
+
+{
+  id:"q1",
+  category:"persistence",
+  en:{
+    q:"When something really matters to you and it becomes difficult, what usually happens?",
+    note:"Choose what feels most like you, not what sounds strongest.",
+    options:[
+      "I keep going because it matters to me.",
+      "I get frustrated first, then I look for another way.",
+      "I step back and ask whether it is still worth pursuing.",
+      "I usually let it go and move on."
+    ]
+  },
+  tl:{
+    q:"Kapag mahalaga talaga sa'yo ang isang bagay pero naging mahirap na, ano ang kadalasang nangyayari?",
+    note:"Piliin ang pinaka-totoo sa'yo, hindi ang mukhang pinakamalakas na sagot.",
+    options:[
+      "Tinutuloy ko dahil mahalaga ito sa akin.",
+      "Nai-frustrate muna ako, tapos naghahanap ako ng ibang paraan.",
+      "Humihinto muna ako at tinatanong kung sulit pa bang ipagpatuloy.",
+      "Karaniwan, binibitawan ko na at nagpapatuloy."
+    ]
+  }
+},
+
+{
+  id:"q2",
+  category:"pressure",
+  en:{
+    q:"When you're under pressure, what do you naturally do first?",
+    options:[
+      "I focus on what needs to be done.",
+      "I think through everything before I act.",
+      "I look for someone I trust to talk it through.",
+      "I withdraw for a while and process it alone."
+    ]
+  },
+  tl:{
+    q:"Kapag nasa pressure ka, ano ang natural mong unang ginagawa?",
+    options:[
+      "Nakafocus ako sa kung ano ang kailangang gawin.",
+      "Iniisip ko muna nang mabuti ang lahat bago kumilos.",
+      "Naghahanap ako ng taong pinagkakatiwalaan ko para mapag-usapan ito.",
+      "Umaatras muna ako at pinoproseso ko mag-isa."
+    ]
+  }
+},
+
+{
+  id:"q3",
+  category:"energy",
+  en:{
+    q:"Which kind of moment tends to give you energy?",
+    options:[
+      "Creating something from an idea.",
+      "Solving something that doesn't make sense yet.",
+      "Helping someone move forward.",
+      "Learning something I didn't know before."
+    ]
+  },
+  tl:{
+    q:"Anong klaseng moment ang kadalasang nagbibigay sa'yo ng energy?",
+    options:[
+      "Kapag may ginagawa akong bagay mula sa isang idea.",
+      "Kapag may problemang hindi pa malinaw at nalulutas ko ito.",
+      "Kapag nakakatulong akong umusad ang isang tao.",
+      "Kapag may natututunan akong bago."
+    ]
+  }
+},
+
+{
+  id:"q4",
+  category:"vision",
+  en:{
+    q:"When you start something new, what do you naturally picture first?",
+    options:[
+      "The finished result.",
+      "The first step I need to take.",
+      "The people who will be affected by it.",
+      "The possibilities of what it could become."
+    ]
+  },
+  tl:{
+    q:"Kapag nagsisimula ka ng bago, ano ang natural mong unang naiisip?",
+    options:[
+      "Kung ano ang magiging final result.",
+      "Kung ano ang unang step na kailangan kong gawin.",
+      "Kung sino ang maaapektuhan nito.",
+      "Kung ano pa ang puwedeng maging resulta nito."
+    ]
+  }
+},
+
+{
+  id:"q5",
+  category:"curiosity",
+  en:{
+    q:"When something doesn't make sense to you, what do you want first?",
+    options:[
+      "The reason behind it.",
+      "A clear instruction on what to do.",
+      "Examples that show how it works.",
+      "Time to explore it myself."
+    ]
+  },
+  tl:{
+    q:"Kapag may bagay na hindi mo maintindihan, ano ang gusto mong malaman muna?",
+    options:[
+      "Ang totoong dahilan kung bakit ganoon.",
+      "Malinaw na instruction kung ano ang gagawin.",
+      "Mga example para makita kung paano ito gumagana.",
+      "Oras para ako mismo ang mag-explore."
+    ]
+  }
+},
+
+{
+  id:"q6",
+  category:"structure",
+  en:{
+    q:"How do you usually feel about rules and instructions?",
+    options:[
+      "If they work, I prefer to follow them.",
+      "I follow them, but I may improve the process.",
+      "I need to understand why the rule exists first.",
+      "I prefer freedom to decide how things should be done."
+    ]
+  },
+  tl:{
+    q:"Ano ang karaniwang feeling mo tungkol sa rules at instructions?",
+    options:[
+      "Kung gumagana naman, mas gusto kong sundin.",
+      "Sinusunod ko, pero baka may ma-improve pa sa process.",
+      "Kailangan ko munang maintindihan kung bakit ganoon ang rule.",
+      "Mas gusto ko ng freedom para ako ang magdesisyon kung paano gagawin."
+    ]
+  }
+},
+
+{
+  id:"q7",
+  category:"risk",
+  en:{
+    q:"Which feels more natural to you?",
+    options:[
+      "A bigger possibility, even when there is uncertainty.",
+      "A safe path with a clear outcome.",
+      "A balanced choice between security and possibility.",
+      "It depends on what is at stake."
+    ]
+  },
+  tl:{
+    q:"Alin ang mas natural para sa'yo?",
+    options:[
+      "Mas malaking possibility kahit may uncertainty.",
+      "Mas safe na path na malinaw ang outcome.",
+      "Balance sa security at possibility.",
+      "Depende sa kung ano ang nakataya."
+    ]
+  }
+},
+
+{
+  id:"q8",
+  category:"people",
+  en:{
+    q:"When you're around different kinds of people, what usually happens?",
+    options:[
+      "I naturally adjust to the situation.",
+      "I stay mostly the same no matter who is around.",
+      "I become more expressive around people I trust.",
+      "I prefer observing before I open up."
+    ]
+  },
+  tl:{
+    q:"Kapag kasama mo ang iba't ibang klase ng tao, ano ang kadalasang nangyayari?",
+    options:[
+      "Natural akong nag-aadjust depende sa situation.",
+      "Halos pareho lang ako kahit sino ang kasama.",
+      "Mas expressive ako kapag trusted ko ang mga tao.",
+      "Mas gusto kong mag-observe muna bago mag-open."
+    ]
+  }
+},
+
+{
+  id:"q9",
+  category:"empathy",
+  en:{
+    q:"When someone you care about is struggling, what do you naturally want to do?",
+    options:[
+      "Understand what they are feeling and why.",
+      "Help them find a practical solution.",
+      "Stay beside them so they don't feel alone.",
+      "Give them space until they're ready."
+    ]
+  },
+  tl:{
+    q:"Kapag nahihirapan ang isang taong mahalaga sa'yo, ano ang natural mong gustong gawin?",
+    options:[
+      "Intindihin kung ano ang nararamdaman nila at bakit.",
+      "Tulungan silang makahanap ng practical na solution.",
+      "Samahan sila para hindi nila maramdaman na mag-isa sila.",
+      "Bigyan sila ng space hanggang handa na sila."
+    ]
+  }
+},
+
+{
+  id:"q10",
+  category:"commitment",
+  en:{
+    q:"Once you've committed to something, what is hardest for you?",
+    options:[
+      "Leaving it unfinished.",
+      "Accepting that it may need to change.",
+      "Admitting when I need help.",
+      "Knowing when it is time to let go."
+    ]
+  },
+  tl:{
+    q:"Kapag committed ka na sa isang bagay, ano ang pinakamahirap para sa'yo?",
+    options:[
+      "Iwan itong unfinished.",
+      "Tanggapin na baka kailangan itong magbago.",
+      "Aminin na kailangan ko ng tulong.",
+      "Malaman kung kailan na talaga dapat bumitaw."
+    ]
+  }
+},
+
+{
+  id:"q11",
+  category:"motivation",
+  en:{
+    q:"Which feeling makes you want to become better?",
+    options:[
+      "Knowing I can do more.",
+      "Proving to myself that I can overcome something.",
+      "Wanting to create a better life.",
+      "Wanting my life to mean something."
+    ]
+  },
+  tl:{
+    q:"Anong feeling ang nagtutulak sa'yo para maging better?",
+    options:[
+      "Alam kong kaya ko pang gumawa ng higit pa.",
+      "Gusto kong patunayan sa sarili ko na kaya kong malampasan ang isang bagay.",
+      "Gusto kong magkaroon ng mas magandang buhay.",
+      "Gusto kong magkaroon ng meaning ang buhay ko."
+    ]
+  }
+},
+
+{
+  id:"q12",
+  category:"failure",
+  en:{
+    q:"When something you worked hard for doesn't happen, what do you usually tell yourself?",
+    options:[
+      "Try again, but differently.",
+      "Maybe I wasn't ready yet.",
+      "I need to understand what went wrong.",
+      "Maybe this wasn't meant for me."
+    ]
+  },
+  tl:{
+    q:"Kapag hindi nangyari ang isang bagay na pinaghirapan mo, ano ang kadalasang sinasabi mo sa sarili mo?",
+    options:[
+      "Subukan ulit, pero ibang paraan naman.",
+      "Baka hindi pa ako ready.",
+      "Kailangan kong maintindihan kung saan nagkamali.",
+      "Baka hindi talaga para sa akin iyon."
+    ]
+  }
+},
+
+{
+  id:"q13",
+  category:"environment",
+  en:{
+    q:"Where do you think you would naturally do your best work?",
+    options:[
+      "A place with clear goals and enough freedom.",
+      "A fast-moving place where I can solve problems.",
+      "A creative place where I can build and experiment.",
+      "A meaningful place where my work helps people."
+    ]
+  },
+  tl:{
+    q:"Saan mo tingin natural kang makakagawa ng best work mo?",
+    options:[
+      "Lugar na malinaw ang goals pero may sapat na freedom.",
+      "Mabilis na environment kung saan nakaka-solve ako ng problems.",
+      "Creative na lugar kung saan makakagawa at makakapag-experiment ako.",
+      "Lugar na meaningful at may natutulungan ang ginagawa ko."
+    ]
+  }
+},
+
+{
+  id:"q14",
+  category:"freedom",
+  en:{
+    q:"How much freedom do you usually need to feel comfortable?",
+    options:[
+      "I like structure, as long as I have some room to move.",
+      "I need a lot of independence.",
+      "I like having someone to guide me when needed.",
+      "I can adapt either way."
+    ]
+  },
+  tl:{
+    q:"Gaano karaming freedom ang kailangan mo para maging comfortable?",
+    options:[
+      "Gusto ko ng structure basta may space pa rin akong kumilos.",
+      "Kailangan ko ng malaking independence.",
+      "Gusto ko ng guidance kapag kailangan.",
+      "Kaya kong mag-adjust kahit alin."
+    ]
+  }
+},
+
+{
+  id:"q15",
+  category:"meaning",
+  en:{
+    q:"If money and other people's opinions were not a problem, what would you want more of in your life?",
+    options:[
+      "Freedom.",
+      "Growth.",
+      "Creativity.",
+      "Meaningful relationships and contribution."
+    ]
+  },
+  tl:{
+    q:"Kung hindi problema ang pera at opinion ng ibang tao, ano ang gusto mong mas magkaroon sa buhay mo?",
+    options:[
+      "Freedom.",
+      "Growth.",
+      "Creativity.",
+      "Meaningful relationships at contribution."
+    ]
+  }
+},
+
+{
+  id:"q16",
+  category:"current",
+  freeText:true,
+  en:{
+    q:"What has been taking up the most space in your mind lately?",
+    note:"You can answer in your own words. There's no need to make it sound perfect.",
+    placeholder:"Tell me what's been on your mind…"
+  },
+  tl:{
+    q:"Ano ang pinaka kumukuha ng space sa isip mo nitong mga nakaraan?",
+    note:"Sarili mong words ang gamitin mo. Hindi kailangang perfect ang pagkakasulat.",
+    placeholder:"Sabihin mo kung ano ang nasa isip mo…"
+  }
+},
+
+{
+  id:"q17",
+  category:"growth",
+  freeText:true,
+  en:{
+    q:"What is something about yourself that you're genuinely trying to improve?",
+    note:"It can be something small. Sometimes the small things tell us a lot.",
+    placeholder:"Something I'm working on is…"
+  },
+  tl:{
+    q:"Ano ang isang bagay tungkol sa sarili mo na talagang sinusubukan mong i-improve?",
+    note:"Kahit maliit lang. Minsan, maraming sinasabi ang maliliit na bagay tungkol sa atin.",
+    placeholder:"Ang sinusubukan kong ayusin o pagbutihin ay…"
+  }
+},
+
+{
+  id:"q18",
+  category:"future",
+  freeText:true,
+  en:{
+    q:"When you imagine a life that feels right for you, what does it feel like?",
+    note:"Don't worry about job titles. Think about the life itself.",
+    placeholder:"It feels like…"
+  },
+  tl:{
+    q:"Kapag ini-imagine mo ang buhay na talagang bagay sa'yo, ano ang pakiramdam nito?",
+    note:"Huwag munang isipin ang job title. Isipin mo muna ang mismong buhay.",
+    placeholder:"Parang ganito ang feeling…"
+  }
+},
+
+{
+  id:"q19",
+  category:"season",
+  freeText:true,
+  en:{
+    q:"If you could describe your current season of life in one honest thought, what would you say?",
+    note:"You don't have to make it inspirational. Just make it true.",
+    placeholder:"Right now, I feel like…"
+  },
+  tl:{
+    q:"Kung ilalarawan mo ang current season ng buhay mo sa isang honest na thought, ano ang sasabihin mo?",
+    note:"Hindi kailangang inspirational. Kailangan lang maging totoo.",
+    placeholder:"Sa ngayon, pakiramdam ko…"
+  }
+},
+
+{
+  id:"q20",
+  category:"hope",
+  freeText:true,
+  en:{
+    q:"After everything you've been through, what do you still hope becomes true for you?",
+    note:"Take your time with this one.",
+    placeholder:"I still hope that…"
+  },
+  tl:{
+    q:"Pagkatapos ng lahat ng pinagdaanan mo, ano pa rin ang inaasahan mong maging totoo para sa'yo?",
+    note:"Dahan-dahan lang sa sagot na ito.",
+    placeholder:"Umaasa pa rin ako na…"
+  }
+}
+
+];
+
+
+/* =========================================================
+   FRIEND RESPONSES
+   ========================================================= */
+
+const responseBank = {
+
+  en:[
+    "I hear you… That tells me something worth noticing.",
+    "That makes sense. There's no need to force a label around it.",
+    "Interesting… sometimes the way we respond says more than the answer itself.",
+    "I get that. Let's keep looking at the bigger picture.",
+    "There's something here. Keep going — we're starting to see a pattern.",
+    "You don't have to explain everything perfectly. Your honest answer is enough.",
+    "I appreciate that answer. Let's go one step deeper.",
+    "That gives me another piece of the picture.",
+    "I hear you. And honestly, that may matter more than you realize.",
+    "No judgment here. We're simply trying to understand what feels true for you."
+  ],
+
+  tl:[
+    "Naririnig kita… May isang bagay sa sagot mo na magandang pansinin.",
+    "Gets ko. Hindi natin kailangang lagyan agad ng label.",
+    "Interesting… minsan mas maraming sinasabi ang paraan ng pagtugon natin kaysa sa mismong sagot.",
+    "Naiintindihan ko. Tingnan pa natin ang mas malaking picture.",
+    "May pattern na nagsisimulang lumitaw. Tuloy lang tayo.",
+    "Hindi mo kailangang ipaliwanag nang perpekto. Sapat na ang honest mong sagot.",
+    "Appreciate ko ang sagot mo. One step deeper tayo.",
+    "May nadagdag na namang importanteng piece sa picture.",
+    "Naririnig kita. At honestly, baka mas mahalaga ang sagot mo kaysa sa iniisip mo.",
+    "Walang judgment dito. Sinusubukan lang nating maintindihan kung ano talaga ang totoo para sa'yo."
+  ]
+};
+
+
+/* =========================================================
+   UTILITIES
+   ========================================================= */
+
+function uid(){
+  return "THS-" +
+    Date.now().toString(36).toUpperCase() +
+    "-" +
+    Math.random().toString(36).slice(2,8).toUpperCase();
+}
+
+function escapeHTML(str){
+  return String(str ?? "")
+    .replace(/&/g,"&amp;")
+    .replace(/</g,"&lt;")
+    .replace(/>/g,"&gt;")
+    .replace(/"/g,"&quot;")
+    .replace(/'/g,"&#039;");
+}
+
+function show(id){
+  document.getElementById(id).classList.remove("hidden");
+}
+
+function hide(id){
+  document.getElementById(id).classList.add("hidden");
+}
+
+function setLanguage(lang){
+  language = lang;
+
+  document.querySelectorAll(".lang").forEach(btn=>{
+    btn.classList.toggle("active",btn.dataset.lang === lang);
+  });
+
+  updateIntroLanguage();
+}
+
+function updateIntroLanguage(){
+
+  if(!profile.name) return;
+
+  const c = copy[language];
+
+  document.getElementById("introTitle").textContent =
+    c.introTitle(profile.name);
+
+  document.getElementById("introText").textContent =
+    c.introText;
+
+  document.getElementById("introCard1Title").textContent =
+    c.card1Title;
+
+  document.getElementById("introCard1Text").textContent =
+    c.card1Text;
+
+  document.getElementById("introCard2Title").textContent =
+    c.card2Title;
+
+  document.getElementById("introCard2Text").textContent =
+    c.card2Text;
+
+  document.getElementById("introCard3Title").textContent =
+    c.card3Title;
+
+  document.getElementById("introCard3Text").textContent =
+    c.card3Text;
+
+  document.getElementById("introBottom").textContent =
+    c.introBottom;
+}
+
+
+/* =========================================================
+   START
+   ========================================================= */
+
+function beginExperience(){
+
+  const input = document.getElementById("name");
+  const name = input.value.trim();
+
+  if(!name){
+    input.focus();
+    input.style.borderColor = "rgba(217,160,160,.7)";
+    return;
+  }
+
+  profile = {
+    id:uid(),
+    name:name,
+    language:language,
+    startedAt:new Date().toISOString(),
+    completedAt:"",
+    answers:[],
+    reflections:[],
+    blueprint:{}
+  };
+
+  currentQuestion = 0;
+  answers = [];
+
+  localStorage.setItem(
+    "THS_CURRENT_SESSION",
+    JSON.stringify(profile)
+  );
+
+  updateIntroLanguage();
+
+  hide("landing");
+  show("intro");
+
+  window.scrollTo({top:0,behavior:"instant"});
+}
+
+
+function startAssessment(){
+
+  hide("intro");
+  show("assessment");
+
+  document.getElementById("conversationLabel").textContent =
+    copy[language].conversation;
+
+  renderQuestion();
+}
+
+
+/* =========================================================
+   QUESTION RENDER
+   ========================================================= */
+
+function renderQuestion(){
+
+  const q = questions[currentQuestion];
+  const content = q[language];
+
+  const pct =
+    ((currentQuestion) / TOTAL_QUESTIONS) * 100;
+
+  document.getElementById("progressFill").style.width =
+    `${Math.max(4,pct)}%`;
+
+  document.getElementById("counter").textContent =
+    `${currentQuestion + 1} / ${TOTAL_QUESTIONS}`;
+
+  let html = `
+    <div class="question-card">
+
+      <div class="question">
+        ${escapeHTML(content.q)}
+      </div>
+  `;
+
+  if(content.note){
+    html += `
+      <div class="question-note">
+        ${escapeHTML(content.note)}
+      </div>
+    `;
+  }
+
+  if(q.freeText){
+
+    html += `
+      <textarea
+        id="freeAnswer"
+        class="input"
+        maxlength="1800"
+        placeholder="${escapeHTML(content.placeholder || "")}"
+      ></textarea>
+
+      <div class="actions" style="justify-content:flex-start;">
+        <button class="primary" onclick="submitFreeText()">
+          ${currentQuestion === TOTAL_QUESTIONS - 1
+            ? copy[language].final
+            : copy[language].next}
+        </button>
+      </div>
+    `;
+
+  }else{
+
+    html += `<div class="answers">`;
+
+    content.options.forEach((option,index)=>{
+
+      const letter =
+        String.fromCharCode(65 + index);
+
+      html += `
+        <button
+          class="answer"
+          onclick="chooseAnswer(${index})"
+        >
+          <span class="letter">${letter}</span>
+          ${escapeHTML(option)}
+        </button>
+      `;
+    });
+
+    html += `</div>`;
+  }
+
+  html += `</div>`;
+
+  document.getElementById("questionArea").innerHTML = html;
+
+  const free = document.getElementById("freeAnswer");
+
+  if(free){
+    free.focus();
+  }
+}
+
+
+/* =========================================================
+   ANSWERING
+   ========================================================= */
+
+function chooseAnswer(index){
+
+  const q = questions[currentQuestion];
+
+  const answerText =
+    q[language].options[index];
+
+  recordAnswer(answerText,index);
+
+  showFriendResponse();
+
+}
+
+
+function submitFreeText(){
+
+  const box = document.getElementById("freeAnswer");
+  const value = box.value.trim();
+
+  if(!value){
+    box.focus();
+    box.style.borderColor =
+      "rgba(217,160,160,.7)";
+    return;
+  }
+
+  recordAnswer(value,null);
+
+  showFriendResponse();
+}
+
+
+function recordAnswer(answerText,index){
+
+  answers[currentQuestion] = {
+    questionId:questions[currentQuestion].id,
+    category:questions[currentQuestion].category,
+    question:questions[currentQuestion][language].q,
+    answer:answerText,
+    selectedIndex:index,
+    language:language,
+    timestamp:new Date().toISOString()
+  };
+
+  profile.answers = answers.filter(Boolean);
+
+  saveSession();
+}
+
+
+function saveSession(){
+
+  localStorage.setItem(
+    "THS_CURRENT_SESSION",
+    JSON.stringify(profile)
+  );
+}
+
+
+/* =========================================================
+   FRIEND RESPONSE
+   ========================================================= */
+
+function showFriendResponse(){
+
+  const bank = responseBank[language];
+
+  const text =
+    bank[currentQuestion % bank.length];
+
+  profile.reflections.push({
+    questionNumber:currentQuestion + 1,
+    message:text,
+    timestamp:new Date().toISOString()
+  });
+
+  saveSession();
+
+  const area =
+    document.getElementById("questionArea");
+
+  const response = document.createElement("div");
+
+  response.className = "friend-response";
+
+  response.innerHTML = `
+    <div class="small">
+      ${language === "en" ? "A little reflection" : "Kaunting reflection"}
+    </div>
+    <p>${escapeHTML(text)}</p>
+  `;
+
+  area.appendChild(response);
+
+  setTimeout(()=>{
+
+    currentQuestion++;
+
+    if(currentQuestion >= TOTAL_QUESTIONS){
+
+      finishAssessment();
+
+    }else{
+
+      renderQuestion();
+
+      window.scrollTo({
+        top:0,
+        behavior:"smooth"
+      });
+    }
+
+  },900);
+}
+
+
+/* =========================================================
+   ANALYSIS ENGINE
+   ========================================================= */
+
+function getAnswer(id){
+  return profile.answers.find(a=>a.questionId === id)?.answer || "";
+}
+
+function getIndex(id){
+  return profile.answers.find(a=>a.questionId === id)?.selectedIndex;
+}
+
+function hasText(id, words){
+  const text = getAnswer(id).toLowerCase();
+
+  return words.some(word =>
+    text.includes(word.toLowerCase())
+  );
+}
+
+function countOption(index){
+  return profile.answers.filter(
+    a => a.selectedIndex === index
+  ).length;
+}
+
+
+/* =========================================================
+   BLUEPRINT GENERATION
+   ========================================================= */
+
+function buildBlueprint(){
+
+  const q1 = getIndex("q1");
+  const q3 = getIndex("q3");
+  const q4 = getIndex("q4");
+  const q5 = getIndex("q5");
+  const q6 = getIndex("q6");
+  const q7 = getIndex("q7");
+  const q8 = getIndex("q8");
+  const q9 = getIndex("q9");
+  const q10 = getIndex("q10");
+  const q11 = getIndex("q11");
+  const q12 = getIndex("q12");
+  const q13 = getIndex("q13");
+  const q14 = getIndex("q14");
+  const q15 = getIndex("q15");
+
+  let traits = [];
+  let direction = [];
+  let strengths = [];
+  let friction = [];
+  let tools = [];
+
+  /* Persistence */
+
+  if(q1 === 0 || q1 === 1 || q10 === 0){
+    strengths.push("Persistence");
+  }
+
+  if(q1 === 1 || q12 === 0){
+    strengths.push("Recovery through action");
+  }
+
+  /* Creation */
+
+  if(q3 === 0 || q4 === 2){
+    strengths.push("Creative drive");
+    direction.push("Builder / Creator");
+  }
+
+  /* Problem solving */
+
+  if(q3 === 1 || q5 === 0 || q12 === 2){
+    strengths.push("Problem solving");
+    direction.push("Strategic Problem Solver");
+  }
+
+  /* Helping */
+
+  if(q3 === 2 || q9 === 0 || q13 === 3){
+    strengths.push("Empathy and contribution");
+    direction.push("People / Impact-Oriented Work");
+  }
+
+  /* Learning */
+
+  if(q3 === 3 || q5 === 3){
+    strengths.push("Curiosity and learning");
+    direction.push("Continuous Learner");
+  }
+
+  /* Vision */
+
+  if(q4 === 0 || q4 === 3){
+    strengths.push("Future-oriented thinking");
+  }
+
+  /* Why */
+
+  if(q5 === 0 || q6 === 2){
+    traits.push("You tend to look beneath the surface before fully accepting something.");
+  }
+
+  /* Structure */
+
+  if(q6 === 0){
+    traits.push("You appreciate systems that already work and don't feel the need to complicate them.");
+  }
+
+  if(q6 === 3 || q14 === 1){
+    friction.push("Too much control may eventually feel restrictive.");
+  }
+
+  /* Possibility */
+
+  if(q7 === 0){
+    traits.push("You seem willing to move toward possibility even when certainty isn't guaranteed.");
+  }
+
+  if(q7 === 1){
+    traits.push("Security and clarity appear important when you make significant choices.");
+  }
+
+  /* People */
+
+  if(q8 === 0){
+    strengths.push("Adaptability");
+  }
+
+  if(q8 === 3){
+    friction.push("You may need time before you feel comfortable opening up fully.");
+  }
+
+  /* Empathy */
+
+  if(q9 === 0 || q9 === 2){
+    strengths.push("Emotional awareness");
+  }
+
+  /* Commitment */
+
+  if(q10 === 0){
+    friction.push("Once you commit, you may find it difficult to walk away even when something has become heavy.");
+  }
+
+  if(q10 === 3){
+    friction.push("Knowing when to let go may sometimes be harder than knowing how to keep going.");
+  }
+
+  /* Motivation */
+
+  if(q11 === 0 || q11 === 1){
+    traits.push("Growth and personal progress seem to matter deeply to you.");
+  }
+
+  if(q11 === 3 || q15 === 3){
+    traits.push("Meaning appears to matter alongside achievement.");
+  }
+
+  /* Environment */
+
+  if(q13 === 0){
+    direction.push("Structured Independence");
+  }
+
+  if(q13 === 1){
+    direction.push("Fast-Paced Problem Solving");
+  }
+
+  if(q13 === 2){
+    direction.push("Creative Exploration");
+  }
+
+  /* Freedom */
+
+  if(q14 === 1){
+    traits.push("You may work best when trusted with meaningful independence.");
+  }
+
+  if(q14 === 2){
+    traits.push("Support and guidance can help you move with greater confidence.");
+  }
+
+  /* Remove duplicates */
+
+  strengths = [...new Set(strengths)].slice(0,5);
+  direction = [...new Set(direction)].slice(0,5);
+  friction = [...new Set(friction)].slice(0,4);
+  traits = [...new Set(traits)].slice(0,4);
+
+  /* Defaults */
+
+  if(!strengths.length){
+    strengths = [
+      "Self-awareness",
+      "Adaptability",
+      "Willingness to grow"
+    ];
+  }
+
+  if(!direction.length){
+    direction = [
+      "Growth-Oriented Work",
+      "Problem Solving",
+      "Meaningful Contribution"
+    ];
+  }
+
+  if(!friction.length){
+    friction = [
+      "You may sometimes think longer than necessary before taking the next step."
+    ];
+  }
+
+  /* Current season */
+
+  const seasonText =
+    getAnswer("q19") ||
+    "You're in a season of figuring out what comes next.";
+
+  const currentMind =
+    getAnswer("q16") ||
+    "There are things currently asking for my attention.";
+
+  const growthText =
+    getAnswer("q17") ||
+    "I am still learning how to become better.";
+
+  const futureText =
+    getAnswer("q18") ||
+    "I want a life that feels meaningful and true to me.";
+
+  const hopeText =
+    getAnswer("q20") ||
+    "I still hope that good things are ahead.";
+
+  /* Shield recognition */
+
+  let shield = "OVERTHINKING";
+
+  if(
+    q10 === 0 &&
+    (q1 === 0 || q1 === 1)
+  ){
+    shield = "ENDURANCE";
+  }
+
+  if(
+    q5 === 0 &&
+    q6 === 2 &&
+    q12 === 2
+  ){
+    shield = "INTELLECTUALIZATION";
+  }
+
+  if(
+    hasText("q16",[
+      "family","money","financial","fear",
+      "takot","pamilya","pera","responsibility"
+    ])
+  ){
+    shield = "PROTECTIVE LOGIC";
+  }
+
+  if(
+    hasText("q16",[
+      "tired","burnout","lost","empty",
+      "pagod","burnout","lost","walang gana"
+    ])
+  ){
+    shield = "WITHDRAWAL";
+  }
+
+  /* Way through */
+
+  if(shield === "INTELLECTUALIZATION"){
+    tools.push({
+      title:"Make it smaller.",
+      text:"When something feels emotionally heavy, temporarily turn it into a simple list of facts, choices, and the next step you can actually control."
+    });
+  }
+
+  if(shield === "PROTECTIVE LOGIC"){
+    tools.push({
+      title:"Question the safe story.",
+      text:"Some of your reasons may be completely real. Just ask yourself whether they are protecting you from a real problem, or also protecting you from the possibility of trying."
+    });
+  }
+
+  if(shield === "WITHDRAWAL"){
+    tools.push({
+      title:"Give the feeling somewhere to go.",
+      text:"You don't have to solve everything at once. Move one difficult feeling into something constructive — writing, movement, learning, creating, or one small task."
+    });
+  }
+
+  if(shield === "ENDURANCE"){
+    tools.push({
+      title:"Don't only endure. Redirect.",
+      text:"Your ability to keep going is valuable. The next step is learning where that energy deserves to go, instead of carrying everything simply because you can."
+    });
+  }
+
+  if(shield === "OVERTHINKING"){
+    tools.push({
+      title:"Test instead of guessing.",
+      text:"When you notice yourself thinking in circles, create a small experiment. A real experience can sometimes teach you what another hour of thinking cannot."
+    });
+  }
+
+  const mantra =
+    generateMantra(q1,q7,q11,shield,hopeText);
+
+  const bible =
+    generateBible(q1,q11,shield);
+
+  const ending =
+    generateEnding(
+      profile.name,
+      q1,
+      q11,
+      q15,
+      shield,
+      seasonText,
+      hopeText
+    );
+
+  return {
+    traits,
+    strengths,
+    direction,
+    friction,
+    shield,
+    tools,
+    seasonText,
+    currentMind,
+    growthText,
+    futureText,
+    hopeText,
+    mantra,
+    bible,
+    ending
+  };
+}
+
+
+/* =========================================================
+   MANTRA
+   ========================================================= */
+
+function generateMantra(q1,q7,q11,shield,hope){
+
+  if(language === "tl"){
+
+    if(shield === "ENDURANCE"){
+      return "Hindi ko kailangang patunayan na kaya kong tiisin ang lahat. Maaari kong piliin kung saan ko ilalagay ang lakas ko, at patuloy akong magiging mas mabuting version ng sarili ko.";
+    }
+
+    if(q7 === 0 && q11 === 0){
+      return "Hindi ko kailangang makita ang buong daan. Sapat nang alam ko ang susunod na hakbang, at may tapang akong gawin ito.";
+    }
+
+    if(q11 === 3){
+      return "Hindi lang ako naghahanap ng success. Hinahanap ko rin ang meaning. At habang nagiging ako, hindi ko kailangang madaliin ang proseso.";
+    }
+
+    return "Hindi ko kailangang maging perfect para umusad. Maaari akong matuto, mag-adjust, at patuloy na maging mas mabuting version ng sarili ko.";
+  }
+
+  if(shield === "ENDURANCE"){
+    return "I don't have to prove that I can carry everything. I can choose where my strength belongs, and keep becoming the person I'm trying to be.";
+  }
+
+  if(q7 === 0 && q11 === 0){
+    return "I don't need to see the whole road. I only need enough courage for the next step, and enough faith to keep becoming.";
+  }
+
+  if(q11 === 3){
+    return "I'm not only looking for success. I'm looking for meaning too. I can keep becoming without rushing the process.";
+  }
+
+  return "I don't have to be perfect to move forward. I can learn, adjust, and keep becoming a better version of myself.";
+}
+
+
+/* =========================================================
+   BIBLICAL REFLECTION
+   ========================================================= */
+
+function generateBible(q1,q11,shield){
+
+  if(language === "tl"){
+
+    if(shield === "ENDURANCE"){
+      return {
+        reference:"James 1:2–4",
+        passage:"Ang pagtitiyaga ay maaaring maging daan tungo sa maturity.",
+        text:"May mga season na hindi natin pinipili, pero maaari pa rin tayong matuto kung paano mamuhay sa loob nito. Ang Biblical wisdom dito ay hindi nagsasabing kailangan mong mahalin ang hirap. Sa halip, ipinapaalala nito na ang pagtitiyaga ay maaaring humubog sa atin habang nagpapatuloy tayo.",
+        note:"Ito ay spiritual reflection lamang, hiwalay sa psychological interpretation ng assessment."
+      };
+    }
+
+    if(q11 === 3){
+      return {
+        reference:"Proverbs 3:5–6",
+        passage:"Magtiwala sa Panginoon nang buong puso at kilalanin Siya sa iyong mga lakad.",
+        text:"Hindi mo kailangang malaman ang buong direksyon bago ka makagawa ng susunod na hakbang. Minsan, ang faith ay hindi pagkakaroon ng lahat ng sagot. Ito ay pagpapatuloy kahit hindi pa kumpleto ang larawan.",
+        note:"Ito ay spiritual reflection lamang, hiwalay sa psychological interpretation ng assessment."
+      };
+    }
+
+    return {
+      reference:"Proverbs 3:5–6",
+      passage:"Magtiwala sa Panginoon nang buong puso at kilalanin Siya sa iyong mga lakad.",
+      text:"May mga pagkakataong gusto nating makita muna ang buong plano bago tayo kumilos. Ngunit ang Biblical wisdom ay maaari ring magpaalala na hindi natin kailangang hawakan ang buong mapa para magpatuloy. Minsan, sapat na ang susunod na hakbang.",
+      note:"Ito ay spiritual reflection lamang, hiwalay sa psychological interpretation ng assessment."
+    };
+  }
+
+  if(shield === "ENDURANCE"){
+    return {
+      reference:"James 1:2–4",
+      passage:"Perseverance can develop maturity.",
+      text:"Some seasons are not chosen, but they can still shape us. This wisdom does not mean that hardship is automatically good or that you should simply keep suffering. It offers another perspective: perseverance can become part of our growth when we learn what the season is asking us to become.",
+      note:"This is offered as spiritual reflection, separate from the psychological interpretation above."
+    };
+  }
+
+  if(q11 === 3){
+    return {
+      reference:"Proverbs 3:5–6",
+      passage:"Trust in the Lord with all your heart, and acknowledge Him in your ways.",
+      text:"There are seasons when we want the entire plan before taking the next step. Biblical wisdom can gently remind us that faith does not always mean having every answer. Sometimes it means continuing with the next step while trusting that you don't have to control the whole road.",
+      note:"This is offered as spiritual reflection, separate from the psychological interpretation above."
+    };
+  }
+
+  return {
+    reference:"Proverbs 3:5–6",
+    passage:"Trust in the Lord with all your heart, and acknowledge Him in your ways.",
+    text:"There are moments when we want to see the entire plan before moving. Biblical wisdom can gently remind us that we don't have to hold the whole map before taking the next step. Sometimes, faith looks like moving forward with what you know while releasing what you cannot yet see.",
+    note:"This is offered as spiritual reflection, separate from the psychological interpretation above."
+  };
+}
+
+
+/* =========================================================
+   ENDING
+   ========================================================= */
+
+function generateEnding(name,q1,q11,q15,shield,season,hope){
+
+  const n = escapeHTML(name);
+
+  if(language === "tl"){
+
+    if(shield === "ENDURANCE"){
+      return `
+        ${n}, baka sanay ka nang sukatin ang sarili mo sa kung gaano karami ang kaya mong tiisin.
+        Pero baka may mas mahalagang tanong ngayon…
+        <br><br>
+        <strong>Hindi lang “Kaya ko ba?” kundi “Saan ko gustong dalhin ang lakas ko?”</strong>
+        <br><br>
+        Hindi mo kailangang madaliin ang susunod na chapter. Patuloy kang nagiging ikaw.
+        At habang nagpapatuloy ka, huwag mong kalimutang mabuhay sa mga bagay na nandito na ngayon.
+      `;
+    }
+
+    if(q11 === 3){
+      return `
+        ${n}, baka hindi mo kailangang makita ang buong direction ng buhay mo ngayon.
+        Baka sapat munang malaman kung ano ang mahalaga sa'yo at gawin ang susunod na mabuting hakbang.
+        <br><br>
+        May mga bagay na hindi pa malinaw. Okay lang iyon.
+        Hindi ibig sabihin na wala nang direction.
+        <br><br>
+        <strong>Hindi ka kailangang maging tapos para masabing umuusad ka.</strong>
+      `;
+    }
+
+    if(q7Safe(q1,q15)){
+      return `
+        ${n}, may mga bagay na gusto mong maabot, pero sana hindi mo makalimutang tingnan ang mga bagay na unti-unti nang nabubuo.
+        <br><br>
+        Baka hindi lahat ng progress ay kailangan mong sukatin.
+        Minsan, sapat nang mapansin mong hindi ka na katulad ng dati.
+        <br><br>
+        <strong>Patuloy kang maging ikaw. Pero huwag mong kalimutang mabuhay habang nagiging ikaw.</strong>
+      `;
+    }
+
+    return `
+      ${n}, hindi mo kailangang malaman ang buong sagot ngayon.
+      <br><br>
+      Ang mahalaga, may bahagi sa'yo na patuloy na nagtatanong, natututo, at umaasang may mas magandang susunod na chapter.
+      <br><br>
+      Huwag mong maliitin ang maliit na progress.
+      Huwag mong madaliin ang proseso.
+      At higit sa lahat, huwag mong kalimutang mabuhay sa season na mayroon ka ngayon.
+    `;
+  }
+
+  if(shield === "ENDURANCE"){
+    return `
+      ${n}, maybe you've become so used to measuring yourself by how much you can endure.
+      But perhaps there's another question worth asking now…
+      <br><br>
+      <strong>Not only “Can I handle this?” but “Where do I want this strength to take me?”</strong>
+      <br><br>
+      You don't have to rush the next chapter. You're still becoming.
+      And while you become, don't forget to live inside the life that's already here.
+    `;
+  }
+
+  if(q11 === 3){
+    return `
+      ${n}, maybe you don't need to see the entire direction of your life right now.
+      Maybe you only need to know what matters to you and take the next honest step.
+      <br><br>
+      Some things are still unclear. That's okay.
+      Uncertainty doesn't automatically mean you're without direction.
+      <br><br>
+      <strong>You don't have to be finished to know that you're moving forward.</strong>
+    `;
+  }
+
+  if(q7Safe(q1,q15)){
+    return `
+      ${n}, there may be things you're still hoping to reach.
+      But don't forget to notice the things that are already beginning to take shape.
+      <br><br>
+      Not every kind of progress needs to be measured.
+      Sometimes it's enough to realize that you're not the same person who started.
+      <br><br>
+      <strong>Keep becoming. But don't forget to live while you're becoming.</strong>
+    `;
+  }
+
+  return `
+    ${n}, you don't need to have the whole answer today.
+    <br><br>
+    What matters is that there's still a part of you that keeps asking, learning, and hoping for a better next chapter.
+    <br><br>
+    Don't underestimate small progress.
+    Don't rush the process.
+    And most importantly, don't forget to live inside the season you're already in.
+  `;
+}
+
+function q7Safe(q1,q15){
+  return q1 === 0 || q1 === 1 || q15 === 0 || q15 === 1;
+}
+
+
+/* =========================================================
+   FORMSPREE SUBMISSION
+   Sends name, language, timestamps, every question,
+   every answer, and a complete JSON backup.
+   ========================================================= */
+
+async function submitToFormspree(){
+
+  const responses = questions.map((q,index) => {
+    const answer = profile.answers.find(
+      a => a.questionId === q.id
+    );
+
+    return {
+      question_number:index + 1,
+      question_id:q.id,
+      category:q.category,
+      question:answer?.question || q[profile.language].q,
+      answer:answer?.answer || "",
+      selected_index:
+        typeof answer?.selectedIndex === "number"
+          ? answer.selectedIndex
+          : null,
+      language:answer?.language || profile.language,
+      timestamp:answer?.timestamp || ""
+    };
+  });
+
+  const submission = {
+    project:"The Hidden Season — Personal Blueprint",
+    submission_id:profile.id,
+    visitor_name:profile.name,
+    language:profile.language,
+    started_at:profile.startedAt,
+    completed_at:profile.completedAt,
+    total_questions:questions.length,
+    responses:responses
+  };
+
+  /* Always keep a complete local backup. */
+  localStorage.setItem(
+    "THS_LAST_SUBMISSION",
+    JSON.stringify(submission)
+  );
+
+  try{
+
+    const formData = new FormData();
+
+    formData.append("project",
+      "The Hidden Season — Personal Blueprint");
+    formData.append("submission_id", profile.id || "");
+    formData.append("visitor_name", profile.name || "");
+    formData.append("language", profile.language || "");
+    formData.append("started_at", profile.startedAt || "");
+    formData.append("completed_at", profile.completedAt || "");
+    formData.append("total_questions", String(questions.length));
+
+    /* Send every question and answer as separate fields. */
+    responses.forEach((item,index)=>{
+
+      const number = String(index + 1).padStart(2,"0");
+
+      formData.append(`q${number}_question`, item.question);
+      formData.append(`q${number}_answer`, item.answer);
+      formData.append(`q${number}_category`, item.category);
+      formData.append(
+        `q${number}_selected_index`,
+        item.selected_index === null ? "" : String(item.selected_index)
+      );
+      formData.append(`q${number}_language`, item.language);
+      formData.append(`q${number}_timestamp`, item.timestamp);
+    });
+
+    /* Complete machine-readable backup. */
+    formData.append(
+      "responses_json",
+      JSON.stringify(responses)
+    );
+
+    const response = await fetch(
+      FORMSPREE_ENDPOINT,
+      {
+        method:"POST",
+        headers:{
+          "Accept":"application/json"
+        },
+        body:formData
+      }
+    );
+
+    if(!response.ok){
+      throw new Error(`Formspree returned HTTP ${response.status}`);
+    }
+
+    localStorage.setItem(
+      "THS_FORMSPREE_STATUS",
+      JSON.stringify({
+        submitted:true,
+        submittedAt:new Date().toISOString(),
+        submissionId:profile.id
+      })
+    );
+
+    console.log("The Hidden Season submission sent successfully.");
+    return true;
+
+  }catch(error){
+
+    /*
+      The Blueprint still opens if Formspree is temporarily
+      unavailable. The complete submission remains locally saved.
+    */
+    localStorage.setItem(
+      "THS_FORMSPREE_STATUS",
+      JSON.stringify({
+        submitted:false,
+        failedAt:new Date().toISOString(),
+        submissionId:profile.id,
+        error:String(error)
+      })
+    );
+
+    console.error(
+      "The Hidden Season Formspree submission failed:",
+      error
+    );
+
+    return false;
+  }
+}
+
+
+/* =========================================================
+   FINISH
+   ========================================================= */
+
+async function finishAssessment(){
+
+  profile.completedAt =
+    new Date().toISOString();
+
+  profile.blueprint =
+    buildBlueprint();
+
+  saveSession();
+
+  await submitToFormspree();
+
+  renderReport();
+
+  hide("assessment");
+  show("report");
+
+  window.scrollTo({
+    top:0,
+    behavior:"instant"
+  });
+}
+
+
+/* =========================================================
+   REPORT
+   ========================================================= */
+
+function renderReport(){
+
+  const b = profile.blueprint;
+  const c = copy[language];
+
+  document.getElementById("reportTitle").textContent =
+    c.yourBlueprint;
+
+  document.getElementById("reportIntro").textContent =
+    c.reportIntro;
+
+  let html = "";
+
+  /* 01 WHO YOU ARE */
+
+  html += section(
+    "01",
+    c.sections.who,
+    `
+      <p>
+        ${whoText(b)}
+      </p>
+
+      ${b.traits.map(t =>
+        `<div class="insight">${escapeHTML(t)}</div>`
+      ).join("")}
+    `
+  );
+
+
+  /* 02 WHAT DRIVES YOU */
+
+  html += section(
+    "02",
+    c.sections.drives,
+    `
+      <p>
+        ${drivesText(b)}
+      </p>
+    `
+  );
+
+
+  /* 03 WHAT PULLS YOU */
+
+  html += section(
+    "03",
+    c.sections.pulls,
+    `
+      <p>
+        ${pullsText(b)}
+      </p>
+    `
+  );
+
+
+  /* 04 STRENGTHS */
+
+  html += section(
+    "04",
+    c.sections.brings,
+    `
+      <p>
+        ${bringsIntro(b)}
+      </p>
+
+      <div class="cluster-grid">
+        ${b.strengths.map(s =>
+          `<div class="cluster"><strong>${escapeHTML(s)}</strong><span>${strengthExplanation(s)}</span></div>`
+        ).join("")}
+      </div>
+    `
+  );
+
+
+  /* 05 ENVIRONMENT */
+
+  html += section(
+    "05",
+    c.sections.environment,
+    `
+      <p>
+        ${environmentText(b)}
+      </p>
+    `
+  );
+
+
+  /* 06 FRICTION */
+
+  html += section(
+    "06",
+    c.sections.friction,
+    `
+      <p>
+        ${frictionIntro(b)}
+      </p>
+
+      ${b.friction.map(f =>
+        `<div class="insight">${escapeHTML(f)}</div>`
+      ).join("")}
+    `
+  );
+
+
+  /* 07 DIRECTION */
+
+  html += section(
+    "07",
+    c.sections.direction,
+    `
+      <p>
+        ${directionIntro(b)}
+      </p>
+
+      <div class="cluster-grid">
+        ${b.direction.map(d =>
+          `<div class="cluster"><strong>${escapeHTML(d)}</strong><span>${directionExplanation(d)}</span></div>`
+        ).join("")}
+      </div>
+
+      <p style="margin-top:18px;color:#918a82;">
+        These are possibilities worth exploring, not predictions about your destiny.
+      </p>
+    `
+  );
+
+
+  /* 08 CURRENT SEASON */
+
+  html += section(
+    "08",
+    c.sections.season,
+    `
+      <p>
+        This part is about where you are right now. It doesn't have to define who you are forever.
+      </p>
+
+      <div class="insight">
+        <strong>What you told me:</strong><br>
+        ${escapeHTML(b.seasonText)}
+      </div>
+
+      <p>
+        ${seasonInterpretation(b)}
+      </p>
+    `
+  );
+
+
+  /* 09 SOMETHING NOTICED */
+
+  html += section(
+    "09",
+    c.sections.unnoticed,
+    `
+      <p>
+        ${unnoticedText(b)}
+      </p>
+    `
+  );
+
+
+  /* 10 WAY THROUGH */
+
+  html += section(
+    "10",
+    c.sections.way,
+    `
+      <p>
+        ${wayIntro(b)}
+      </p>
+
+      ${b.tools.map(tool => `
+        <div class="experiment">
+          <strong>${escapeHTML(tool.title)}</strong>
+          <span>${escapeHTML(tool.text)}</span>
+        </div>
+      `).join("")}
+    `
+  );
+
+
+  /* 11 EXPERIMENTS */
+
+  html += section(
+    "11",
+    c.sections.experiments,
+    `
+      <p>
+        You don't need to change your entire life because of a result.
+        Try something small. Let real experience teach you something.
+      </p>
+
+      <div class="experiment">
+        <strong>7-Day Experiment — Notice</strong>
+        <span>
+          For seven days, notice when you feel most alive, most useful,
+          most curious, and most drained. Don't judge it. Just collect the evidence.
+        </span>
+      </div>
+
+      <div class="experiment">
+        <strong>7-Day Experiment — Build</strong>
+        <span>
+          Create or improve one small thing connected to one of your direction clusters.
+          Notice whether the process gives you energy or takes it away.
+        </span>
+      </div>
+
+      <div class="experiment">
+        <strong>7-Day Experiment — One Step</strong>
+        <span>
+          Choose one thing you've been thinking about and turn it into one small action.
+          Sometimes clarity comes after movement, not before it.
+        </span>
+      </div>
+    `
+  );
+
+
+  /* 12 REFLECTION */
+
+  html += section(
+    "12",
+    c.sections.reflection,
+    `
+      <p>
+        ${reflectionText(b)}
+      </p>
+
+      <div class="insight">
+        <strong>Something to carry with you:</strong><br>
+        ${escapeHTML(b.hopeText)}
+      </div>
+    `
+  );
+
+
+  /* 13 MANTRA */
+
+  html += `
+    <section class="report-section mantra">
+      <div class="section-number">13</div>
+      <h2>${c.sections.mantra}</h2>
+      <div class="mantra-text">
+        ${escapeHTML(b.mantra)}
+      </div>
+    </section>
+  `;
+
+
+  /* 14 BIBLE */
+
+  html += `
+    <section class="report-section bible">
+      <div class="section-number">14</div>
+
+      <h2>${c.sections.bible}</h2>
+
+      <p>
+        ${escapeHTML(c.bibleIntro)}
+      </p>
+
+      <div class="insight">
+
+        <div class="bible-reference">
+          ${escapeHTML(b.bible.reference)}
+        </div>
+
+        <div class="quote">
+          ${escapeHTML(b.bible.passage)}
+        </div>
+
+      </div>
+
+      <p>
+        ${escapeHTML(b.bible.text)}
+      </p>
+
+      <p class="bible-note">
+        ${escapeHTML(b.bible.note)}
+      </p>
+
+    </section>
+  `;
+
+
+  /* ENDING */
+
+  html += `
+    <section class="report-section ending">
+
+      <div class="section-number">
+        ${language === "en" ? "YOUR NEXT CHAPTER" : "ANG SUSUNOD MONG CHAPTER"}
+      </div>
+
+      <div class="ending-message">
+        ${b.ending}
+      </div>
+
+      <div class="signature">
+        — Cjc
+      </div>
+
+      <p style="margin-top:45px;color:#807a73;font-size:.84rem;">
+        ${escapeHTML(c.footerNote)}
+      </p>
+
+    </section>
+  `;
+
+
+  document.getElementById("reportContent").innerHTML =
+    html;
+}
+
+
+function section(number,title,body){
+  return `
+    <section class="report-section">
+      <div class="section-number">${number}</div>
+      <h2>${escapeHTML(title)}</h2>
+      ${body}
+    </section>
+  `;
+}
+
+
+/* =========================================================
+   REPORT WRITING
+   ========================================================= */
+
+function whoText(b){
+
+  if(language === "tl"){
+    return `May pattern sa mga sagot mo na nagsasabing hindi ka basta naghahanap ng destination. Mukhang mahalaga rin sa'yo kung sino ang nagiging ikaw habang papunta roon. May bahagi sa'yo na gustong umunawa, matuto, at umusad kahit hindi laging malinaw ang lahat.`;
+  }
+
+  return `There's a pattern across your answers that suggests you're not simply looking for a destination. You also seem to care about who you're becoming on the way there. There's a part of you that wants to understand, learn, and keep moving even when everything isn't completely clear.`;
+}
+
+
+function drivesText(b){
+
+  if(language === "tl"){
+    return `Growth appears to be important to you. Hindi lang basta achievement ang mahalaga. May value rin sa'yo ang feeling na may progress, may natututunan, at may dahilan kung bakit mo ginagawa ang ginagawa mo.`;
+  }
+
+  return `Growth appears to matter to you. Achievement may be part of it, but it doesn't seem to be the whole story. You also seem to care about progress, learning, and having a reason behind what you're doing.`;
+}
+
+
+function pullsText(b){
+
+  if(language === "tl"){
+    return `May natural kang paghila toward situations where you can create, solve, learn, adapt, or contribute. Hindi ibig sabihin nito na iisang career lang ang para sa'yo. Mas useful itong tingnan bilang mga uri ng experience na puwedeng magbigay sa'yo ng energy.`;
+  }
+
+  return `Your answers pull toward situations where you can create, solve, learn, adapt, or contribute. That doesn't mean there is one career you're supposed to choose. Think of these as types of experiences that may give you energy and deserve to be explored.`;
+}
+
+
+function bringsIntro(b){
+
+  if(language === "tl"){
+    return `Hindi ito tungkol sa pagiging perfect. Ito ang mga qualities na paulit-ulit na lumitaw sa paraan ng pagsagot mo.`;
+  }
+
+  return `This isn't about being perfect. These are qualities that repeatedly showed up in the way you answered.`;
+}
+
+
+function strengthExplanation(s){
+
+  const map = {
+    "Persistence":"You seem willing to stay with something when it matters.",
+    "Recovery through action":"Frustration may become a reason for you to find another way forward.",
+    "Creative drive":"You seem energized when an idea can become something real.",
+    "Problem solving":"You naturally want to understand what is wrong and how it can improve.",
+    "Empathy and contribution":"You seem to notice people and care about what happens to them.",
+    "Curiosity and learning":"You appear energized by discovering how things work.",
+    "Future-oriented thinking":"You often seem to picture what something could become.",
+    "Adaptability":"You can adjust yourself to different people and situations.",
+    "Emotional awareness":"You seem interested in understanding what people are feeling."
+  };
+
+  if(language === "tl"){
+    const tl = {
+      "Persistence":"Mukhang kaya mong manatili sa isang bagay kapag mahalaga ito sa'yo.",
+      "Recovery through action":"Ang frustration ay puwedeng maging dahilan para humanap ka ng ibang paraan para umusad.",
+      "Creative drive":"Mukhang nabibigyan ka ng energy kapag nagiging real ang isang idea.",
+      "Problem solving":"Natural sa'yo na alamin kung ano ang problema at paano ito maaayos.",
+      "Empathy and contribution":"Napapansin mo ang ibang tao at mahalaga sa'yo ang epekto ng ginagawa mo sa kanila.",
+      "Curiosity and learning":"Mukhang nabibigyan ka ng energy kapag may bago kang natututunan.",
+      "Future-oriented thinking":"Madalas mong nakikita kung ano ang puwedeng maging resulta ng isang bagay.",
+      "Adaptability":"Kaya mong mag-adjust depende sa tao at situation.",
+      "Emotional awareness":"Mukhang interesado kang maintindihan ang nararamdaman ng mga tao."
+    };
+
+    return tl[s] || "Isang pattern na lumitaw sa paraan ng pagsagot mo.";
+  }
+
+  return map[s] || "A pattern that showed up in the way you answered.";
+}
+
+
+function environmentText(b){
+
+  if(language === "tl"){
+    return `Mukhang mas bagay sa'yo ang environment na may malinaw na direction pero hindi ka kinokontrol sa bawat galaw. Kailangan mo ng sapat na structure para alam mo kung ano ang mahalaga, pero may space ka ring mag-isip, mag-adjust, at gumawa ng paraan.`;
+  }
+
+  return `You may work best in an environment with clear direction without being controlled at every step. You seem to benefit from enough structure to know what matters, while still having room to think, adjust, and find your own way.`;
+}
+
+
+function frictionIntro(b){
+
+  if(language === "tl"){
+    return `May magandang side ang bawat strength. Pero minsan, ang strength na ginagamit natin para makayanan ang isang season ay puwede ring maging dahilan kung bakit mas matagal tayong nananatili sa isang bagay.`;
+  }
+
+  return `Every strength has another side. Sometimes the same quality that helps us survive a difficult season can also keep us in something longer than we need to be.`;
+}
+
+
+function directionIntro(b){
+
+  if(language === "tl"){
+    return `Hindi ito listahan ng mga trabahong “dapat” mong kunin. Mga direction lang ito na puwede mong i-test sa totoong buhay.`;
+  }
+
+  return `This isn't a list of jobs you are supposed to choose. These are directions you can test in real life and compare against your actual experience.`;
+}
+
+
+function directionExplanation(d){
+
+  const en = {
+    "Builder / Creator":"Turning ideas into something tangible.",
+    "Strategic Problem Solver":"Understanding problems and finding better ways forward.",
+    "People / Impact-Oriented Work":"Helping people or contributing to something meaningful.",
+    "Continuous Learner":"Growing through knowledge, skill, and exploration.",
+    "Structured Independence":"Clear goals with enough freedom to own the process.",
+    "Fast-Paced Problem Solving":"Situations where decisions and solutions matter.",
+    "Creative Exploration":"Room to experiment, build, and discover.",
+    "Growth-Oriented Work":"Work that allows increasing responsibility and development."
+  };
+
+  const tl = {
+    "Builder / Creator":"Pag-transform ng ideas into something na puwedeng makita at gamitin.",
+    "Strategic Problem Solver":"Pag-intindi ng problems at paghahanap ng mas magandang paraan.",
+    "People / Impact-Oriented Work":"Pagtulong sa tao o paggawa ng bagay na may meaningful na impact.",
+    "Continuous Learner":"Patuloy na pag-grow sa knowledge at skills.",
+    "Structured Independence":"May malinaw na goals pero may freedom sa proseso.",
+    "Fast-Paced Problem Solving":"Environment na nangangailangan ng mabilis at practical na solutions.",
+    "Creative Exploration":"May space para mag-experiment, gumawa, at mag-discover.",
+    "Growth-Oriented Work":"Work na nagbibigay ng pagkakataong lumago at magkaroon ng mas malaking responsibility."
+  };
+
+  return language === "tl"
+    ? (tl[d] || "Direction na puwedeng i-explore.")
+    : (en[d] || "A direction worth exploring.");
+}
+
+
+function seasonInterpretation(b){
+
+  const words =
+    b.seasonText.toLowerCase();
+
+  if(
+    words.includes("pagod") ||
+    words.includes("tired") ||
+    words.includes("burnout") ||
+    words.includes("lost") ||
+    words.includes("walang gana")
+  ){
+    if(language === "tl"){
+      return `Mukhang may bigat na kailangan mong dalhin ngayon. Hindi ibig sabihin na ang bigat na iyon ang identity mo. Baka kailangan mo ring bigyan ang sarili mo ng space para huminga, hindi lang ng pressure para magpatuloy.`;
+    }
+
+    return `There seems to be some weight taking up space right now. That doesn't mean the weight is your identity. You may need room to breathe as much as you need motivation to keep moving.`;
+  }
+
+  if(language === "tl"){
+    return `Ang season na ito ay maaaring chapter lamang, hindi buong story. Ang mahalaga ay mapansin mo kung ano ang tinuturo nito sa'yo at kung ano ang gusto mong dalhin sa susunod na chapter.`;
+  }
+
+  return `This season may be a chapter, not the whole story. What matters is noticing what it is teaching you and deciding what you want to carry into the next chapter.`;
+}
+
+
+function unnoticedText(b){
+
+  const visitorName =
+    escapeHTML((profile.name || "").trim()) || "friend";
+
+  if(language === "tl"){
+
+    if(b.shield === "ENDURANCE"){
+      return `${visitorName}, may napansin ako sa paraan ng pagsagot mo. Mukhang kapag may frustration o hirap, hindi agad ibig sabihin na susuko ka. Minsan, lalo kang nagiging committed. Magandang strength iyon. Pero baka may isang bagay na worth bantayan: ang pagiging matatag ay hindi ibig sabihin na kailangan mong tiisin ang lahat. May mga bagay na dapat ipaglaban, at may mga bagay na dapat baguhin ang paraan ng paghawak.`;
+    }
+
+    return `${visitorName}, may pattern na unti-unting lumitaw. Mukhang mas marami kang alam tungkol sa sarili mo kaysa sa minsan mong inaakala. Baka ang kailangan mo ngayon ay hindi panibagong label, kundi mas malinaw na pagtingin sa kung ano ang nagbibigay sa'yo ng energy, kung ano ang kumukuha nito, at kung anong klaseng buhay ang gusto mong buuin.`;
+  }
+
+  if(b.shield === "ENDURANCE"){
+    return `${visitorName}, I noticed something in the way you answered. When frustration or difficulty shows up, it doesn't necessarily make you quit. Sometimes it seems to make you more committed. That's a real strength. But there's something worth watching too: being strong doesn't mean you have to carry everything. Some things deserve persistence. Others may deserve a different way of being handled.`;
+  }
+
+  return `${visitorName}, there's a pattern beginning to emerge. You may know more about yourself than you sometimes give yourself credit for. Maybe what you need right now isn't another label. Maybe you need a clearer look at what gives you energy, what takes it away, and what kind of life you actually want to build.`;
+}
+
+
+function wayIntro(b){
+
+  if(language === "tl"){
+    return `Hindi mo kailangang “labanan” ang sarili mo. Ang goal ay magkaroon ng mas healthy na paraan para harapin ang patterns na minsan ay humahawak sa'yo.`;
+  }
+
+  return `You don't need to fight yourself. The goal is to find a healthier way to respond to the patterns that sometimes hold you back.`;
+}
+
+
+function reflectionText(b){
+
+  if(language === "tl"){
+    return `Kung pagsasamahin ang lahat ng sagot mo, parang may isang malaking theme: gusto mong umusad, pero gusto mo ring maintindihan kung saan ka talaga papunta. At baka iyon ang dahilan kung bakit may mga season na parang mabagal ang progress. Hindi ibig sabihin na walang nangyayari. Minsan, may growth na hindi agad nakikita habang nasa loob ka pa ng proseso.`;
+  }
+
+  return `When I put your answers together, one theme stands out: you want to move forward, but you also want to understand where you're actually going. That may be why some seasons can feel slower than you'd like. Slow doesn't always mean nothing is happening. Sometimes growth is hardest to see while you're still inside the process.`;
+}
+
+
+/* =========================================================
+   EXPORT EVERYTHING
+   ========================================================= */
+
+function exportResponses(){
+
+  const exportData = {
+    product:"The Hidden Season — Personal Blueprint",
+    version:"1.0",
+    exportedAt:new Date().toISOString(),
+
+    participant:{
+      id:profile.id,
+      name:profile.name,
+      language:profile.language
+    },
+
+    session:{
+      startedAt:profile.startedAt,
+      completedAt:profile.completedAt
+    },
+
+    /* RAW ANSWERS — NEVER OMITTED */
+    rawAnswers:profile.answers,
+
+    /* FRIEND RESPONSES */
+    interactionReflections:profile.reflections,
+
+    /* GENERATED BLUEPRINT */
+    generatedBlueprint:profile.blueprint
+  };
+
+  const json =
+    JSON.stringify(exportData,null,2);
+
+  const blob =
+    new Blob([json],{
+      type:"application/json"
+    });
+
+  const url =
+    URL.createObjectURL(blob);
+
+  const a =
+    document.createElement("a");
+
+  const safeName =
+    profile.name
+      .replace(/[^a-z0-9]/gi,"_")
+      .slice(0,40);
+
+  a.href = url;
+  a.download =
+    `The_Hidden_Season_${safeName}_${Date.now()}.json`;
+
+  document.body.appendChild(a);
+  a.click();
+  a.remove();
+
+  URL.revokeObjectURL(url);
+}
+
+
+/* =========================================================
+   START AGAIN
+   ========================================================= */
+
+function startAgain(){
+
+  const confirmed =
+    confirm(
+      language === "en"
+        ? "Start a new Blueprint? Your current session will remain saved in this browser until you clear it."
+        : "Magsisimula ng bagong Blueprint? Mananatiling naka-save ang current session sa browser na ito hanggang i-clear mo ito."
+    );
+
+  if(!confirmed) return;
+
+  localStorage.removeItem(
+    "THS_CURRENT_SESSION"
+  );
+
+  location.reload();
+}
+
+
+/* =========================================================
+   RECOVER SESSION
+   ========================================================= */
+
+(function recover(){
+
+  try{
+
+    const saved =
+      localStorage.getItem(
+        "THS_CURRENT_SESSION"
+      );
+
+    if(!saved) return;
+
+    const data =
+      JSON.parse(saved);
+
+    /*
+      We intentionally don't automatically reopen
+      a private session without the visitor choosing.
+      The saved information remains available in the browser.
+    */
+
+  }catch(e){
+    console.warn("The Hidden Season session recovery issue:",e);
+  }
+
+})();
+</script>
+
+</body>
+</html>
